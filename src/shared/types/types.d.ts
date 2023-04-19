@@ -25,22 +25,15 @@ export interface CensusZipCodeRequest {
     base_url: string;
     api_url: string;
     url: string;
-
     get_median_household_income(): Promise<{ "Median Household Income": number }>;
-
     get_population(): Promise<{ Population: number }>;
-
     get_zipcode_info(): Promise<{
         Population: number;
         "Median Household Income": number;
         "Average home value": number;
     }>;
-
     get_median_age(): Promise<{ "Median Age": number }>;
-
     get_average_home_value(): Promise<{ "Average Home Value": number }>;
-
-
 }
 
 export interface BLSZipCodeRequest {
@@ -50,6 +43,5 @@ export interface BLSZipCodeRequest {
     base_url: string;
     api_url: string;
     url: string;
-
     get_average_spent_on_home(): Promise<{ "Average Spent On Home": number }>;
 }
