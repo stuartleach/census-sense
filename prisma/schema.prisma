@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model census_data {
+  id                    Int  @id @default(autoincrement())
+  zipcode               Int? @unique
+  population            Int?
+  income                Int?
+  age                   Int?
+  average_home_value    Int?
+  average_spent_on_home Int?
+}
+
+model texas_zips {
+  id                    Int      @id @default(autoincrement())
+  zipcode               Int      @unique
+  population            Int?
+  income                Int?
+  age                   Int?
+  average_home_value    Int?
+  lat                   Decimal? @db.Decimal
+  lng                   Decimal? @db.Decimal
+  city                  String?
+  state_id              String?
+  state_name            String?
+  uszip_population      String?
+  density               String?
+  county_fips           Int?
+  county_name           String?
+  county_weights        String?
+  county_names_all      String?
+  county_fips_all       String?
+  average_spent_on_home Int?
+}
+
+model nm_zips {
+  zipcode               Int      @unique
+  population            Int?
+  income                Int?
+  age                   Int?
+  average_home_value    Int?
+  lat                   Decimal? @db.Decimal
+  lng                   Decimal? @db.Decimal
+  city                  String?
+  state_id              String?
+  state_name            String?
+  uszip_population      String?
+  density               String?
+  county_fips           Int?
+  county_name           String?
+  county_weights        String?
+  county_names_all      String?
+  county_fips_all       String?
+  average_spent_on_home Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model uszips {
+  zip              Int
+  lat              Decimal? @db.Decimal
+  lng              Decimal? @db.Decimal
+  city             String?
+  state_id         String?
+  state_name       String?
+  zcta             String?
+  parent_zcta      String?
+  uszip_population String?
+  density          String?
+  county_fips      Int?
+  county_name      String?
+  county_weights   String?
+  county_names_all String?
+  county_fips_all  String?
+  imprecise        String?
+  military         String?
+  timezone         String?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model MapData {
+  zipcode                   Int     @id
+  home_expenditure_estimate Decimal @db.Decimal
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model all_zip_data {
+  zipcode               Int      @unique
+  population            Int?
+  income                Int?
+  age                   Int?
+  average_home_value    Int?
+  lat                   Decimal? @db.Decimal
+  lng                   Decimal? @db.Decimal
+  city                  String?
+  state_id              String?
+  state_name            String?
+  uszip_population      String?
+  density               String?
+  county_fips           Int?
+  county_name           String?
+  county_weights        String?
+  county_names_all      String?
+  county_fips_all       String?
+  average_spent_on_home Decimal? @db.Decimal
+  uuid                  String   @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  in_scope              Boolean?
+}
