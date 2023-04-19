@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './client/styles/index.css';
-import App from './client/App';
+import './frontend/styles/index.css';
+import App from './frontend/App';
 import reportWebVitals from './shared/utils/sys-utils/reportWebVitals';
-import './client/styles/index.css';
+import './frontend/styles/index.css';
 
 
 const root = ReactDOM.createRoot(

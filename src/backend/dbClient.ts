@@ -1,9 +1,9 @@
+// This client is used to fetch data from the Postgres db,
+// specified in the prisma client config.
+
 import {PrismaClient} from '@prisma/client';
-import * as texasZipCodes from './zipcodeLists/tx_zip_codes.json';
-import * as newMexicoZipCodes from './zipcodeLists/nm_zip_codes.json';
-import {BLSZipCodeInfo, CensusZipCodeInfo} from './ZipCodeClient';
+import {CensusZipCodeInfo} from './censusClient';
 import targetZipCodes from "./zipcodeLists/targetZipCodes";
-import elPasoZipCodes from "./zipcodeLists/targetZipCodes";
 
 const prisma = new PrismaClient();
 
@@ -13,11 +13,11 @@ interface TargetZipCodes {
 
 const getAllZipCodeData = async (listOfZipCodes: TargetZipCodes) => {
     for (const zip of listOfZipCodes.data) {
-        /* const previousEntry = await prisma.census_data.findFirst({
+         const previousEntry = await prisma.census_data.findFirst({
              where: {zipcode: zip},
          });
 
-         if (previousEntry) continue;*/
+         if (previousEntry) continue;
 
         const censusZipCodeInfo = new CensusZipCodeInfo(zip.toString());
         const [
@@ -48,8 +48,8 @@ const getAllZipCodeData = async (listOfZipCodes: TargetZipCodes) => {
 
 // Update in_scope flag to only include zip codes in market.
 const updateZipcodesInScope = async () => {
-    for (let i = 0; i < elPasoZipCodes.length; i++) {
-        const zip = elPasoZipCodes[i];
+    for (let i = 0; i < targetZipCodes.length; i++) {
+        const zip = targetZipCodes[i];
 
         const num = await prisma.all_zip_data.count(
             {

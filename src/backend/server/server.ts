@@ -1,9 +1,9 @@
 import express from 'express'
-import {getZipCodeData} from "./backendClient";
+import {getZipCodeData} from "../backendClient";
 
 const app = express();
 
-const port = 3000
+const port = 8000
 
 // allow cors
 app.use(function (req: any, res: { header: (arg0: string, arg1: string) => void; }, next: () => void) {
