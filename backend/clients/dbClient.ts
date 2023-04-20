@@ -3,7 +3,7 @@
 
 import {PrismaClient} from '@prisma/client';
 import {CensusZipCodeInfo} from './censusClient';
-import targetZipCodes from "./zipcodeLists/targetZipCodes";
+import targetZipCodes from "../zipcodeLists/targetZipCodes";
 
 const prisma = new PrismaClient();
 

@@ -3,7 +3,7 @@
 // operations provided by the Prisma ORM.
 
 import axios from "axios";
-import {CensusZipCodeRequest} from "../shared/types/types";
+import {CensusZipCodeRequest} from "../../frontend/src/shared/types/types";
 
 
 const census_api_key = process.env.REACT_APP_CENSUS_API_KEY;

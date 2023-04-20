@@ -1,0 +1,24 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+  backend:
+    build: ./backend
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://root:root123@localhost:5432/census_db?schema=public
+#    command: sh -c "npx prisma init && npm prisma generate && npx prisma migrate dev && npm run serve"
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root123
+      - POSTGRES_DB=census_db
+      - POSTGRES_HOST=localhost
+    ports:
+      - '5432:5432'

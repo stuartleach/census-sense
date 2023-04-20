@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "baseUrl": "frontend/src",
+    "baseUrl": "src",
     "target": "ESNext",
     "lib": [
       "dom",

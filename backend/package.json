@@ -1,5 +1,5 @@
 {
-  "name": "react_c_client",
+  "name": "census_sense_backend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,15 +29,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "serve": "ts-node src/backend/server/server.ts",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:css": "tailwindcss -i src/frontend/styles/tailwind.css -o src/styles/index.css",
-    "watch:css": "tailwindcss -i src/frontend/styles/tailwind.css -o src/styles/index.css --watch",
-    "db_client": "ts-node --require tsconfig-paths/register src/backend/dbClient.ts",
-    "pull_zip": "ts-node --require tsconfig-paths/register src/backend/censusClient.ts"
+    "serve": "ts-node ./server/server.ts",
+    "db_client": "ts-node --require tsconfig-paths/register backend/dbClient.ts",
+    "pull_zip": "ts-node --require tsconfig-paths/register backend/censusClient.ts"
   },
   "eslintConfig": {
     "extends": [

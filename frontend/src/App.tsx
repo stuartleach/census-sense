@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './styles/App.css';
-import listOfZipCodes from '../backend/zipcodeLists/targetZipCodes';
-import {CensusZipCodeRequest, Props, SearchResult} from "../shared/types/types";
+import {Props, SearchResult} from "./shared/types/types";
 import axios from "axios";
 
 const SearchBar = (props: Props) => {
@@ -78,10 +77,10 @@ const App = () => {
     const numberWithCommas = (x: number) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
-    const [searchTerm, setSearchTerm] = useState(listOfZipCodes[0].toString());
+    const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
 
-    const getAllZipCodes = async () => {
+  /*  const getAllZipCodes = async () => {
         for (let i = 0; i < listOfZipCodes.length; i++) {
             const newResult = await getZipCodeInfo(listOfZipCodes[i].toString());
             if (newResult == null) {
@@ -89,7 +88,7 @@ const App = () => {
             }
             setSearchResults((prevResults) => prevResults.concat(newResult));
         }
-    }
+    }*/
 
 
     const getZipCodeInfo = async (searchTerm: string) => {
@@ -137,7 +136,6 @@ const App = () => {
 
     return (
         <div className="App">
-            <button onClick={() => getAllZipCodes()}>Get All Zip Codes</button>
             <SearchBar {...props} />
             <SearchResults {...props} />
         </div>
